@@ -80,8 +80,8 @@ EOF
 if ! [ -e ~/.termux/font.ttf ]; then
 	mkdir -p .downloads
 	curl -Lo .downloads/jetendard-ttf.zip https://github.com/kuskhan/jetendard/releases/download/v0.1.0/Jetendard-TTF.zip
-	unzip .downloads/jetendard-ttf.zip -d .downloads/jetendard-ttf.zip
-	cp .downloads/jetendard-ttd/ttf/Jetendard-Regular.ttf ~/.termux/font.ttf
+	unzip .downloads/jetendard-ttf.zip -d .downloads/jetendard-ttf
+	cp .downloads/jetendard-ttf/ttf/Jetendard-Regular.ttf ~/.termux/font.ttf
 fi
 
 # Reload termux config and setup storage
