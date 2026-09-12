@@ -10,6 +10,16 @@ else
 	echo "Fish shell already installed"
 fi
 
+# Init ssh
+if ! [ -e ~/.ssh/id_ed25519.pub ]; then
+	ssh-keygen -A
+	echo -n "Enter ssh key name: "
+	read -r ssh_keyname
+	ssh-keygen -t ed25519 -C "$ssh_keyname" -N "" -f ~/.ssh/id_ed25519
+	echo -n "Your ssh key: "
+	cat ~/.ssh/id_ed25519.pub
+fi
+
 # Update git config
 git config --global credential.helper store
 git config --global gpg.format ssh
@@ -78,15 +88,5 @@ fi
 termux-reload-settings
 if ! [ -e ~/storage ]; then
 	termux-setup-storage
-fi
-
-# Init ssh
-if ! [ -e ~/.ssh/id_ed25519.pub ]; then
-	ssh-keygen -A
-	echo -n "Enter ssh key name: "
-	read -r ssh_keyname
-	ssh-keygen -t ed25519 -C "$ssh_keyname" -N "" -f ~/.ssh/id_ed25519
-	echo -n "Your ssh key: "
-	cat ~/.ssh/id_ed25519.pub
 fi
 
